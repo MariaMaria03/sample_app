@@ -1,14 +1,12 @@
 @import "bootstrap";
 
+/* mixins, variables, etc. */
 
-$lightGray: #999;
 $grayMediumLight: #eaeaea;
-$pink: #c3325f;
-$grayLighter: #eee;
 
 @mixin box_sizing {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
   box-sizing: border-box;
 }
 
@@ -78,7 +76,7 @@ p {
   font-weight: bold;
   line-height: 1;
   &:hover {
-    color: #bd362f;
+    color: #CD5C5C;
     text-decoration: none;
   }
 }
@@ -92,12 +90,12 @@ footer {
   color: $grayLight;
   a {
     color: $gray;
-    &:hover {
-      color: $pink;
+    &:hover { 
+      color: #A52A2A;
     }
-  }
-  small {
-    float: left;
+  }  
+  small { 
+    float: left; 
   }
   ul {
     float: right;
@@ -124,10 +122,10 @@ footer {
 aside {
   section {
     padding: 10px 0;
-    border-top: 2px solid #555;
-    border-bottom: 2px solid #555;
+    border-top: 3px solid $grayLighter;
+    border-bottom: 3px solid $grayLighter;
     &:first-child {
-      border: 1;
+      border: 0;
       padding-top: 0;
     }
     span {
@@ -153,12 +151,26 @@ aside {
 /* forms */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 2px solid #bbb;
   width: 100%;
+  padding: 10px;
   margin-bottom: 15px;
   @include box_sizing;
 }
 
 input {
   height: auto !important;
+}
+
+#error_explanation {
+  color: #f00;
+  ul {
+    list-style: none;
+    margin: 0 0 18px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .control-group;
+  @extend .error;
 }
