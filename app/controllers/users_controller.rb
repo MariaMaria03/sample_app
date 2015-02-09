@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :signed_in_user, only: [:edit, :update]
+  before_action :signed_in_user, only: [:index, :edit, :update]
   before_action :correct_user, only: [:edit, :update]
+
 
   def index
     @users = User.all
@@ -47,7 +48,10 @@ class UsersController < ApplicationController
     end
   
     def signed_in_user
-      redirect_to signin_url, notice: "Please sign in." unless sign_in?
+      unless sign_in?
+        store_location
+        redirect_to signin_url, notice: "Please sign in." unless sign_in?
+      end
     end
 
     def correct_user
