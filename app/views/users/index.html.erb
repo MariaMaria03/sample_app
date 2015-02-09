@@ -1,0 +1,9 @@
+<% @users.each do |us| %>
+<tr>
+  <td><%= gravatar_for us %></td>
+  <td><%= us.name %></td>
+  </br>
+  <td><%= us.email %></td>
+  
+ </tr>
+ <% end %>
