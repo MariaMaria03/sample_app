@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user, only: [:edit, :update]
   before_action :admin_user,     only: :destroy
+  before_action :repeat_signup, only: [:new, :create] 
 
 
   def index
@@ -70,5 +71,12 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+    def repeat_signup
+      if sign_in?
+        flash[:success] = "You registered already"
+        redirect_to root_url
+      end
     end
 end

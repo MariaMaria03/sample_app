@@ -4,6 +4,9 @@
       <%= link_to "sample app", root_path, id: "logo" %>
       <nav>
         <ul class="nav pull-right">
+             <% if sign_in? %>
+          <li ><%= link_to "You: " + current_user.name + " |", current_user, id: "your_name" %></li>
+            <% end %>
           <li><%= link_to "Home",    root_path %></li>
           <li><%= link_to "Help",    help_path %></li>
            <% if sign_in? %>
